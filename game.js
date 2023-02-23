@@ -29,9 +29,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       elmnt.style.top = elmnt.offsetTop - pos2 + "px";
       elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-      console.log(elmnt.style.top);
-      console.log(elmnt.style.left);
-      //
+
       document.onmousedown = resetToStart;
 
       //In orderr to stop imediatly
@@ -48,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     function resetToStart() {
       elmnt.style.top = 205 + "px";
       elmnt.style.left = 0 + "px";
+      document.getElementById("game").classList.remove("youwon");
+      document.getElementById("game").classList.remove("youlose");
     }
 
     function checkCollisions() {
