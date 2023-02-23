@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         document.getElementById("game").classList.add("youlose");
       } else if (isColliding(elmnt, document.getElementById("end"))) {
         document.getElementById("status").textContent = "You win! :]";
+        document.getElementById("game").classList.add("youwon");
         closeDragElement();
       }
       function isColliding(a, b) {

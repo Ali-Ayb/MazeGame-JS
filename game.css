@@ -2,9 +2,6 @@
 Game Lab CSS file
 You don't need to download or edit this file.
 */
-#test {
-  background-color: #8888ff;
-}
 h1,
 h2 {
   text-align: center;
@@ -60,6 +57,10 @@ div.boundary.example {
 
 div.youlose {
   background-color: #ff8888;
+}
+
+div.youwon {
+  background-color: #8fff8f;
 }
 
 /*
