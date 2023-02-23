@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function (event) {
+  score = 0;
+  var scoreDisplay = document.createElement("p");
+  scoreDisplay.textContent = "Score: " + score;
+  document.body.appendChild(scoreDisplay);
   dragElement(document.getElementById("start"));
 
   function dragElement(elmnt) {
@@ -48,12 +52,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
       }
       if (collided) {
-        document.getElementById("status").textContent = "You lose! :[";
+        document.getElementById("status").textContent = "You lose! :(";
         closeDragElement();
         document.getElementById("game").classList.add("youlose");
+        score -= 10;
+        scoreDisplay.textContent = "Score: " + score;
       } else if (isColliding(elmnt, document.getElementById("end"))) {
-        document.getElementById("status").textContent = "You win! :]";
+        document.getElementById("status").textContent = "You win! :)";
         document.getElementById("game").classList.add("youwon");
+        score += 5;
+        scoreDisplay.textContent = "Score: " + score;
         closeDragElement();
       }
       function isColliding(a, b) {
