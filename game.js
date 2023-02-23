@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-  // Make the DIV element draggable:
   dragElement(document.getElementById("start"));
 
   function dragElement(elmnt) {
@@ -12,32 +11,58 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     function dragMouseDown(element) {
       element.preventDefault();
-      // get the mouse cursor position at startup:
       startx = pos3 = element.clientX;
       starty = pos4 = element.clientY;
       document.onmouseup = closeDragElement;
-      // call a function whenever the cursor moves:
       document.onmousemove = elementDrag;
     }
 
     function elementDrag(element) {
       element.preventDefault();
-      // calculate the new cursor position:
       pos1 = pos3 - element.clientX;
       pos2 = pos4 - element.clientY;
       pos3 = element.clientX;
       pos4 = element.clientY;
-      // set the element's new position:
+
       elmnt.style.top = elmnt.offsetTop - pos2 + "px";
       elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-      console.log("top", elmnt.style.top);
-      console.log("left", elmnt.style.left);
+      if (checkCollisions()) {
+        document.getElementById("status").textContent = "You lose!";
+      }
+      console.log(score);
     }
 
     function closeDragElement() {
-      // stop moving when mouse button is released:
       document.onmouseup = null;
       document.onmousemove = null;
+    }
+
+    function checkCollisions() {
+      var boundaries = document.querySelectorAll(".boundary");
+      var collided = false;
+      for (var i = 0; i < boundaries.length; i++) {
+        var boundary = boundaries[i];
+        if (isColliding(elmnt, boundary)) {
+          collided = true;
+          break;
+        }
+      }
+      if (collided) {
+        document.getElementById("status").textContent = "You lose! :[";
+        document.getElementById("game").classList.add("youlose");
+      } else if (isColliding(elmnt, document.getElementById("end"))) {
+        document.getElementById("status").textContent = "You win! :]";
+      }
+      function isColliding(a, b) {
+        var aRect = a.getBoundingClientRect();
+        var bRect = b.getBoundingClientRect();
+        return !(
+          aRect.bottom < bRect.top ||
+          aRect.top > bRect.bottom ||
+          aRect.right < bRect.left ||
+          aRect.left > bRect.right
+        );
+      }
     }
   }
 });
