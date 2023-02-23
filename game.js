@@ -49,9 +49,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
       if (collided) {
         document.getElementById("status").textContent = "You lose! :[";
+        closeDragElement();
         document.getElementById("game").classList.add("youlose");
       } else if (isColliding(elmnt, document.getElementById("end"))) {
         document.getElementById("status").textContent = "You win! :]";
+        closeDragElement();
       }
       function isColliding(a, b) {
         var aRect = a.getBoundingClientRect();
