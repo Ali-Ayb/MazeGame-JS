@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   var resestButton = document.createElement("button");
   resestButton.textContent = "Reset";
   statusDiv.insertBefore(resestButton, statusDiv.firstChild);
+  var resetButton = document.querySelector("button");
 
   dragElement(document.getElementById("start"));
 
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
 
       document.getElementById("start").onmousedown = resetToStart;
+      resetButton.onmousedown = resetScore;
 
       //In orderr to stop imediatly
       if (checkCollisions()) {
@@ -54,6 +56,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
       elmnt.style.left = 0 + "px";
       document.getElementById("game").classList.remove("youwon");
       document.getElementById("game").classList.remove("youlose");
+    }
+
+    function resetScore() {
+      score = 0;
+      scoreDisplay.textContent = "Score: 0";
     }
 
     function checkCollisions() {
