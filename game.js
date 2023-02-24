@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   score = 0;
   var scoreDisplay = document.createElement("p");
   scoreDisplay.textContent = "Score: " + score;
-  document.body.appendChild(scoreDisplay);
+  var statusDiv = document.getElementById("status");
+  statusDiv.insertBefore(scoreDisplay, statusDiv.firstChild);
+
   dragElement(document.getElementById("start"));
 
   function dragElement(elmnt) {
@@ -62,12 +64,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
       if (collided) {
         document.getElementById("status").textContent = "You lose! :(";
+        statusDiv.insertBefore(scoreDisplay, statusDiv.firstChild);
         closeDragElement();
         document.getElementById("game").classList.add("youlose");
         score -= 10;
         scoreDisplay.textContent = "Score: " + score;
       } else if (isColliding(elmnt, document.getElementById("end"))) {
         document.getElementById("status").textContent = "You win! :)";
+        statusDiv.insertBefore(scoreDisplay, statusDiv.firstChild);
         document.getElementById("game").classList.add("youwon");
         score += 5;
         scoreDisplay.textContent = "Score: " + score;
