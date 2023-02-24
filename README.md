@@ -1,4 +1,4 @@
-  <h2>Maze Game</h2>
+<h2>Maze Game</h2>
   <h3>Description</h3>
   <p>
     This is a simple maze game where the player has to navigate through a maze
@@ -28,8 +28,8 @@
   <p>
     This game was created by Ali Ayoub as a project for a web development
     course.
-    Specail thanks to <a href"https://www.w3schools.com/howto/howto_js_draggable.asp">w3school</a> and 
-    <a href"https://stackoverflow.com/questions/12066870/how-to-check-if-an-element-is-overlapping-other-elements">stackoverflow</a> 
-    for the great resources 
+    Special thanks to <a href="https://www.w3schools.com/howto/howto_js_draggable.asp">w3schools</a> and 
+    <a href="https://stackoverflow.com/questions/12066870/how-to-check-if-an-element-is-overlapping-other-elements">stackoverflow</a> 
+    for the great resources.
   </p>
 </div>
