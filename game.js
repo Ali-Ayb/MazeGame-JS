@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
   var statusDiv = document.getElementById("status");
   statusDiv.insertBefore(scoreDisplay, statusDiv.firstChild);
 
+  var resestButton = document.createElement("button");
+  resestButton.textContent = "Reset";
+  statusDiv.insertBefore(resestButton, statusDiv.firstChild);
+
   dragElement(document.getElementById("start"));
 
   function dragElement(elmnt) {
@@ -32,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       elmnt.style.top = elmnt.offsetTop - pos2 + "px";
       elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
 
-      document.onmousedown = resetToStart;
+      document.getElementById("start").onmousedown = resetToStart;
 
       //In orderr to stop imediatly
       if (checkCollisions()) {
@@ -65,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if (collided) {
         document.getElementById("status").textContent = "You lose! :(";
         statusDiv.insertBefore(scoreDisplay, statusDiv.firstChild);
+        statusDiv.insertBefore(resestButton, statusDiv.firstChild);
         closeDragElement();
         document.getElementById("game").classList.add("youlose");
         score -= 10;
@@ -72,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       } else if (isColliding(elmnt, document.getElementById("end"))) {
         document.getElementById("status").textContent = "You win! :)";
         statusDiv.insertBefore(scoreDisplay, statusDiv.firstChild);
+        statusDiv.insertBefore(resestButton, statusDiv.firstChild);
         document.getElementById("game").classList.add("youwon");
         score += 5;
         scoreDisplay.textContent = "Score: " + score;
